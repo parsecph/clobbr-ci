@@ -9,12 +9,12 @@ This repository contains examples on how to integrate [@clobbr/cli](https://gith
 In the CI of choice, make sure nodejs is available (recommended version: 14.x) and run checks with clobbr cli, for example:
 
 ```bash
-npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
+npx @clobbr/cli run -u "https://example.com/api" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
 ```
 
 If any of the checks fail, the CI will fail.
 
-> [Go to main documentation to see more ↗️](https://github.com/parsecph/clobbr/blob/master/README.md)
+[Go to main documentation to see more ↗️](https://github.com/parsecph/clobbr/blob/master/README.md)
 
 ### Tested CIs
 #### CI usage examples
@@ -30,8 +30,6 @@ If any of the checks fail, the CI will fail.
 <a href="https://github.com/parsecph/clobbr-ci/blob/main/appveyor.yml">
   <img width="200px" alt="AppVeyor CI integration config" src="https://user-images.githubusercontent.com/1515742/189537169-1b6b812a-9830-4573-955d-b25ccec27e08.png">
 </a>
-
-
 
 ##### circleci
 
