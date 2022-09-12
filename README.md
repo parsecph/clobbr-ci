@@ -1,7 +1,13 @@
 
 <p align="center">
   <img witdh="150px" height="150px" alt="clobbr grid logo" src="https://user-images.githubusercontent.com/1515742/80861783-dcfcc400-8c70-11ea-89c6-671dbdff6f33.png" />
-  <h2 align="center">Clobbr CI integration examples</h2>
+  <h3 align="center">
+    Clobbr CI integration examples <br/>
+    <small><a href="https://clobbr.app">clobbr.app</a></small> <br/>
+    <a href="https://www.npmjs.com/package/@clobbr/cli" target="_blank">
+      <img src="https://img.shields.io/npm/v/@clobbr/cli?label=npm&style=flat" alt="get @clobbr/cli on npm">
+    </a>
+  </h3>
 </p>
 
 This repository contains examples on how to integrate [@clobbr/cli](https://github.com/parsecph/clobbr/tree/master/packages/cli) in various CIs.
@@ -11,6 +17,8 @@ In the CI of choice, make sure nodejs is available (recommended version: 14.x) a
 ```bash
 npx @clobbr/cli run -u "https://example.com/api" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
 ```
+
+<img width="450px" alt="Run checks against results" src="https://user-images.githubusercontent.com/1515742/189538796-4d96f78f-0251-41e4-a549-bcb04eab2fb2.png">
 
 If any of the checks fail, the CI will fail.
 
