@@ -1,0 +1,36 @@
+name: "bump"
+on:
+  schedule:
+    - cron:  '*/60 * * * *'    # At every 60th minute
+
+jobs:
+  singleJobName:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ env.DELAYED_JOB_CHECKOUT_REF }} # SHA that triggered the original job
+
+      - name: save current date
+        run: |
+          # do some operation that changes a file in the git repo
+          date > tmp/time.txt
+
+      - name: setup git config
+        run: |
+
+          git config user.name "DM Bot"
+          git config user.email "<skews.inlays_0q@icloud.com>"
+
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add time.txt
+          git commit -m "🤖 Trigger a new build"
+          git push origin master
+
+      # If job finished successfully, remove the workflow file (and tag if necessary)
+      - name: Remove scheduled job
+        uses: cardinalby/unschedule-job-action@v1
+        with:
+          ghToken: ${{ secrets.WORKFLOWS_TOKEN }}
