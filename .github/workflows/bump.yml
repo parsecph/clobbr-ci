@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v1
+
       - uses: cardinalby/schedule-job-action@v1
         with:
           ghToken: ${{ secrets.WORKFLOWS_TOKEN }}
