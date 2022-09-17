@@ -1,4 +1,17 @@
-- uses: cardinalby/schedule-job-action@v1
-  with:
-    ghToken: ${{ secrets.WORKFLOWS_TOKEN }}
-    templateYmlFile: '.github-scheduled-workflows/bump.yml'
+name: "Schedule Bump"
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: cardinalby/schedule-job-action@v1
+        with:
+          ghToken: ${{ secrets.WORKFLOWS_TOKEN }}
+          templateYmlFile: '.github-scheduled-workflows/bump.yml'
