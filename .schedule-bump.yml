@@ -25,7 +25,7 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
-          git add time.txt
+          git add tmp/time.txt
           git commit -m "🤖 Trigger a new build"
           git push origin master
 
