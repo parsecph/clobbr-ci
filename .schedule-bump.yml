@@ -23,9 +23,10 @@ jobs:
 
       - name: commit
         run: |
+          git checkout main
           git add tmp/time.txt
           git commit -m "🤖 Trigger a new build"
-          git push
+          git push -u origin main
 
       # If job finished successfully, remove the workflow file (and tag if necessary)
       - name: Remove scheduled job
