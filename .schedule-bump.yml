@@ -27,7 +27,7 @@ jobs:
           # Stage the file, commit and push
           git add tmp/time.txt
           git commit -m "🤖 Trigger a new build"
-          git push origin master
+          git push origin main
 
       # If job finished successfully, remove the workflow file (and tag if necessary)
       - name: Remove scheduled job
