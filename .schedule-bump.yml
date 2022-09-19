@@ -18,7 +18,6 @@ jobs:
 
       - name: setup git config
         run: |
-
           git config user.name "DM Bot"
           git config user.email "<skews.inlays_0q@icloud.com>"
 
@@ -27,7 +26,7 @@ jobs:
           # Stage the file, commit and push
           git add tmp/time.txt
           git commit -m "🤖 Trigger a new build"
-          git push origin main
+          git push -u origin main
 
       # If job finished successfully, remove the workflow file (and tag if necessary)
       - name: Remove scheduled job
