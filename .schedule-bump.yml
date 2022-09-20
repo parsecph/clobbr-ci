@@ -1,7 +1,7 @@
 name: "bump"
 on:
   schedule:
-    - cron:  '*/1 * * * *'    # At every 60th minute
+    - cron:  '*/29 * * * *'    # At every 60th minute
 
 jobs:
   singleJobName:
