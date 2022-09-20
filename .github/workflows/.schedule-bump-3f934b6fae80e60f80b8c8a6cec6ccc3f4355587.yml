@@ -1,0 +1,28 @@
+name: bump
+'on':
+  schedule:
+    - cron: '*/60 * * * *'
+jobs:
+  singleJobName:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: '${{ env.DELAYED_JOB_CHECKOUT_REF }}'
+          token: '${{ secrets.WORKFLOWS_TOKEN }}'
+      - name: save current date
+        run: |
+          # do some operation that changes a file in the git repo
+          date > tmp/time.txt
+      - name: setup git config
+        run: |
+          git config user.name "DM Bot"
+          git config user.email "<skews.inlays_0q@icloud.com>"
+      - name: commit
+        run: "git add tmp/time.txt\ngit commit -m \"\U0001F916 Trigger a new build\"\ngit push\n"
+    env:
+      DELAYED_JOB_CHECKOUT_REF: 3f934b6fae80e60f80b8c8a6cec6ccc3f4355587
+      DELAYED_JOB_CHECKOUT_REF_IS_TAG: 'false'
+      DELAYED_JOB_WORKFLOW_FILE_PATH: >-
+        .github/workflows/.schedule-bump-3f934b6fae80e60f80b8c8a6cec6ccc3f4355587.yml
+      DELAYED_JOB_WORKFLOW_UNSCHEDULE_TARGET_BRANCH: main
