@@ -1,7 +1,7 @@
 name: "bump"
 on:
   schedule:
-    - cron:  '*/60 * * * *'    # At every 60th minute
+    - cron:  '*/1 * * * *'    # At every 60th minute
 
 jobs:
   singleJobName:
@@ -10,7 +10,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ env.DELAYED_JOB_CHECKOUT_REF }} # SHA that triggered the original job
-
+          token: ${{ secrets.WORKFLOWS_TOKEN }}
+          
       - name: save current date
         run: |
           # do some operation that changes a file in the git repo
@@ -23,13 +24,6 @@ jobs:
 
       - name: commit
         run: |
-          git checkout main
           git add tmp/time.txt
           git commit -m "🤖 Trigger a new build"
-          git push -u origin main
-
-      # If job finished successfully, remove the workflow file (and tag if necessary)
-      - name: Remove scheduled job
-        uses: cardinalby/unschedule-job-action@v1
-        with:
-          ghToken: ${{ secrets.WORKFLOWS_TOKEN }}
+          git push
