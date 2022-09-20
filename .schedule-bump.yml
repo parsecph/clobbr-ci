@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.DELAYED_JOB_CHECKOUT_REF }} # SHA that triggered the original job
+          ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.WORKFLOWS_TOKEN }}
           
       - name: save current date
