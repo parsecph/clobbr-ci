@@ -15,7 +15,9 @@ This repository contains examples on how to integrate [@clobbr/cli](https://gith
 In the CI of choice, make sure nodejs is available (recommended version: 14.x) and run checks with clobbr cli, for example:
 
 ```bash
-npx @clobbr/cli run -u "https://example.com/api" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
+npx @clobbr/cli run \
+  --url "https://api.github.com/zen" \
+  --checks mean=200 median=200 stdDev=50 q5=150 q50=200 q95=250 q99=300 pctOfSuccess=95
 ```
 
 <img width="450px" alt="Run checks against results" src="https://user-images.githubusercontent.com/1515742/189538796-4d96f78f-0251-41e4-a549-bcb04eab2fb2.png">
@@ -56,7 +58,7 @@ jobs:
       - checkout
       - run:
           name: Run clobbr
-          command: npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
+          command: npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=50 q5=150 q50=200 q95=250 q99=300 pctOfSuccess=95
 
 ```
 
@@ -66,7 +68,7 @@ jobs:
 language: node_js
 node_js:
   - "16"
-script: npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
+script: npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=50 q5=150 q50=200 q95=250 q99=300 pctOfSuccess=95
 ```
 
 ##### appveyor
@@ -80,7 +82,7 @@ environment:
 test_script:
   - node --version
   - npm --version
-  - npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=200 q5=200 q50=200 q95=200 q99=200 pctOfSuccess=95
+  - npx @clobbr/cli run -u "https://60698fbde1c2a10017544a73.mockapi.io" --checks mean=200 median=200 stdDev=50 q5=150 q50=200 q95=250 q99=300 pctOfSuccess=95
 
 build: off
 ```
